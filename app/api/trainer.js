@@ -29,5 +29,22 @@ api.removePorId = (req, res) => {
     console.log("Professor removido com o id informado");
 };
 
+api.alteraTrainer = (req, res) => {
+    var id = req.params.id;
+    var trainer = req.body;
+    var indiceTrainer = trainers.findIndex(trainer => trainer.reputacao == id);
+    console.log('trainer recebido ' + trainer.nome);
+    trainers[indiceTrainer] = trainer;
+    res.sendStatus(200);
+    console.log("Professor alterado com sucesso" + '\n indice: ' + indiceTrainer );
+};
+
+api.salvaTrainer = (req, res) => {
+    var trainer = req.body;
+    trainers.push(trainer);
+    res.sendStatus(201);
+    console.log('Trainer salvo com sucesso');
+};
+
 
 module.exports = api;
