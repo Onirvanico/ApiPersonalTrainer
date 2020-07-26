@@ -1,7 +1,6 @@
+const mongoose = require('mongoose');
 
 module.exports = uri => {
-    
-    var mongoose = require('mongoose');
     
     mongoose.connect('mongodb://' + uri);
     
@@ -12,7 +11,7 @@ module.exports = uri => {
     mongoose.connection.on('disconnected', () => console.log('mongodb foi desconectado'));
     
     process.on('SIGINT', () => mongoose.connection.close(() => {
-        console.log('Conexão com mongoDB encerrada pelo termino do app')
+        console.log('Conexão com mongoDB encerrada pelo término do app')
         process.exit(0);
     }));
 }

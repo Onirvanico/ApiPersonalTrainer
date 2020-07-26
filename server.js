@@ -1,5 +1,5 @@
-var http = require('http');
-var app = require('./config/express');
+const http = require('http');
+const app = require('./config/express');
 require('./config/database')('localhost/apitrainer');
 
 http.createServer(app)
