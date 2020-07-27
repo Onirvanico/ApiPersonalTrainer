@@ -12,7 +12,7 @@ module.exports = app => {
         usuarios.findOne({login: usuario.login, senha: usuario.senha})
             .then(usuario => {
                     if(!usuario) {
-                        console.log('Usuário e senha inválido');
+                        console.log('Usuário e senha inválidos');
                         res.sendStatus(401);
                     } else {
                         var token = jwt.sign({login: usuario.login},
@@ -23,7 +23,7 @@ module.exports = app => {
                     res.end();
 
             }, error => {
-                console.log('Usuário e senha inválido');
+                console.log('Usuário e senha inválidos');
                 res.status(401).json(error);
             });
     };
