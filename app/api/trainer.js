@@ -31,8 +31,8 @@ api.buscaPorId = (req, res) => {
     res.json(trainer); */
     trainers.findById(id)
         .then(trainer => {
-            if(!trainer) throw new Error('Trainer não encontrado com id informado')
-
+            if(!trainer) throw Error('Trainer não encontrado com id informado');
+                                    
             res.json(trainer);
 
         }, error => {
@@ -52,13 +52,24 @@ api.removePorId = (req, res) => {
 };
 
 api.alteraTrainer = (req, res) => {
-    var id = req.params.id;
-    var trainer = req.body;
+    console.log('Tentando alterar trainer');
+    let id = req.params.id;
+    let trainer = req.body;
+
+    /* var trainer = req.body;
     var indiceTrainer = trainers.findIndex(trainer => trainer.reputacao == id);
     console.log('trainer recebido ' + trainer.nome);
     trainers[indiceTrainer] = trainer;
-    res.sendStatus(200);
-    console.log("Professor alterado com sucesso" + '\n indice: ' + indiceTrainer );
+    res.sendStatus(200); */
+    trainers.findByIdAndUpdate(id, trainer)
+        .then(trainer => {
+            if(!trainer) throw new Error('Trainer não encontrado');
+
+            res.json(trainer)
+        }, error => {
+            res.status(404).json(error);
+            console.log(error);     
+        });
 };
 
 api.salvaTrainer = (req, res) => {
