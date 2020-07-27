@@ -8,7 +8,7 @@ module.exports = app => {
         .post(api.salvaTrainer);
 
     app.route('/v1/trainers/:id')
-    .get(api.buscaPorId)
-    .delete( api.removePorId)
-    .put(api.alteraTrainer);
+        .get(api.buscaPorId)
+        .delete( api.removePorId)
+        .put(api.alteraTrainer);
 };

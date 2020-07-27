@@ -7,10 +7,10 @@ app.set('secretkey', 'trespratosdetrigo');
 app.use(bodyParser.json());
 
 consign({cwd: 'app'})
-    .include('models')
-    .then('api')
-    .then('routes/auth.js')
-    .then('routes')
+    .include('models/trainer.js')
+    .then('api/trainer.js')
+    //.then('routes/auth.js')
+    .then('routes/trainer.js')
     .into(app);
 
 module.exports = app;
